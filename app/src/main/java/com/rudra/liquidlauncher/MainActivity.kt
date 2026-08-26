@@ -26,7 +26,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.*
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -70,6 +70,7 @@ fun VoidLiquidMasterLauncher() {
     var roll by remember { mutableFloatStateOf(0f) }
     var pitch by remember { mutableFloatStateOf(0f) }
 
+    // জাইরোস্কোপ সেন্সর লিসেনার
     DisposableEffect(Unit) {
         val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
         val sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
@@ -135,13 +136,23 @@ fun VoidLiquidMasterLauncher() {
                     modifier = Modifier.padding(vertical = 16.dp, horizontal = 28.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(text = currentTime, color = Color.White, fontSize = 48.sp, fontWeight = FontWeight.Light, letterSpacing = 2.sp)
-                    Text(text = currentDate, color = Color.White.copy(alpha = 0.7f), fontSize = 13.sp)
+                    Text(
+                        text = currentTime,
+                        color = Color.White,
+                        fontSize = 48.sp,
+                        fontWeight = FontWeight.Light,
+                        letterSpacing = 2.sp
+                    )
+                    Text(
+                        text = currentDate,
+                        color = Color.White.copy(alpha = 0.7f),
+                        fontSize = 13.sp
+                    )
                 }
             }
         }
 
-        // ২. লিকুইড ডক
+        // ২. লিকুইড গ্লাস ডক
         Box(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -206,13 +217,21 @@ fun VoidLiquidMasterLauncher() {
                     pitch = animatedPitch
                 ) {
                     Column(modifier = Modifier.padding(20.dp)) {
-                        Text("CONTROL CENTER", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                        Text(
+                            text = "CONTROL CENTER",
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp
+                        )
                         Spacer(modifier = Modifier.height(16.dp))
-                        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            LiquidToggleTile("Wi-Fi", Icons.Rounded.Wifi, true)
-                            LiquidToggleTile("Bluetooth", Icons.Rounded.Bluetooth, true)
-                            LiquidToggleTile("Flashlight", Icons.Rounded.FlashlightOn, false)
-                            LiquidToggleTile("AirPlane", Icons.Rounded.AirplanemodeActive, false)
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            LiquidToggleTile("Settings", Icons.Default.Settings, true)
+                            LiquidToggleTile("Search", Icons.Default.Search, true)
+                            LiquidToggleTile("Phone", Icons.Default.Phone, false)
+                            LiquidToggleTile("Favorite", Icons.Default.Star, false)
                         }
                         Spacer(modifier = Modifier.height(16.dp))
                         LiquidSlider("Brightness", 0.75f)
@@ -321,7 +340,12 @@ fun LiquidToggleTile(title: String, icon: ImageVector, defaultState: Boolean) {
         ) {
             Icon(icon, contentDescription = title, tint = Color.White)
         }
-        Text(title, color = Color.White.copy(alpha = 0.8f), fontSize = 11.sp, modifier = Modifier.padding(top = 4.dp))
+        Text(
+            text = title,
+            color = Color.White.copy(alpha = 0.8f),
+            fontSize = 11.sp,
+            modifier = Modifier.padding(top = 4.dp)
+        )
     }
 }
 
