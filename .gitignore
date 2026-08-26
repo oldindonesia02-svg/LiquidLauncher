@@ -1,0 +1,55 @@
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log/OS files
+*.log
+.DS_Store
+
+# Android Studio generated files and folders
+.idea/
+.classpath
+.c9/
+*.class
+*.dex
+*.ear
+*.jar
+*.rar
+*.war
+*.zip
+*.tar.gz
+*.rar
+*.iml
+.gradle
+.idea
+captures/
+.externalNativeBuild
+.cxx
+local.properties
+
+# Keystore files
+*.jks
+*.keystore
+
+# Google Play services json key
+*.json
+
+# Android Studio
+*.apk
+*.ap_
+*.aab
+
+# IntelliJ
+out/
+.idea/
+*.iml
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be tracked by git if you want to share IDE settings with team
+#.vscode/
+
+# Miscellaneous files
+.DS_Store
